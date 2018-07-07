@@ -42,6 +42,7 @@ class MapViewPlugin(val activity: Activity) : MethodCallHandler {
         var hideToolbar: Boolean = false
         var mapTitle: String = ""
         lateinit var initialCameraPosition: CameraPosition
+        var animateCamera: Boolean = false
         var mapActivity: MapActivity? = null
         val REQUEST_GOOGLE_PLAY_SERVICES = 1000
         var mapViewType: Int = GoogleMap.MAP_TYPE_NORMAL
@@ -167,6 +168,7 @@ class MapViewPlugin(val activity: Activity) : MethodCallHandler {
                 val mapOptions = call.argument<Map<String, Any>>("mapOptions")
                 val cameraDict = mapOptions["cameraPosition"] as Map<String, Any>
                 initialCameraPosition = getCameraPosition(cameraDict)
+                animateCamera = mapOptions["animateCamera"] as Boolean
                 toolbarActions = getToolbarActions(call.argument<List<Map<String, Any>>>("actions"))
                 showUserLocation = mapOptions["showUserLocation"] as Boolean
                 showMyLocationButton = mapOptions["showMyLocationButton"] as Boolean

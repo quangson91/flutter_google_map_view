@@ -100,8 +100,14 @@ class MapActivity : AppCompatActivity(),
         map.setOnInfoWindowClickListener { marker ->
             MapViewPlugin.infoWindowTapped(marker.tag as String)
         }
-        map.moveCamera(CameraUpdateFactory.newCameraPosition(
-                MapViewPlugin.initialCameraPosition))
+        val newCameraPosition = CameraUpdateFactory.newCameraPosition(
+            MapViewPlugin.initialCameraPosition
+        );
+        if (MapViewPlugin.animateCamera) {
+            map.animateCamera(newCameraPosition)
+        } else {
+            map.moveCamera(newCameraPosition)
+        }
         MapViewPlugin.onMapReady()
     }
 

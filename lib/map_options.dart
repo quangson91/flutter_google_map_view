@@ -20,6 +20,7 @@ class MapOptions {
   /// because they will not be visible.
   final bool hideToolbar;
   final CameraPosition initialCameraPosition;
+  final bool animateCamera;
   final String title;
   static const CameraPosition _defaultCamera =
       const CameraPosition(const Location(45.5329661, -122.7059508), 12.0);
@@ -31,6 +32,7 @@ class MapOptions {
       this.showCompassButton: false,
       this.hideToolbar = false,
       this.initialCameraPosition: _defaultCamera,
+      this.animateCamera = false,
       this.title: "",
       this.mapViewType: MapViewType.normal});
 
@@ -41,6 +43,7 @@ class MapOptions {
       "showCompassButton": showCompassButton,
       "hideToolbar": hideToolbar,
       "cameraPosition": initialCameraPosition.toMap(),
+      "animateCamera": animateCamera,
       "title": title,
       "mapViewType": getMapTypeName(mapViewType)
     };
